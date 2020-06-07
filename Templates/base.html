@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{{ title }}</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="/static/vendor/fonts/fonts.css" >
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/Account/index" class="nav-link">主页</a>
+      </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="搜索" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+        <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a data-toggle="dropdown" href="#">
+            {% for userinfo in userinfolist %}
+              <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+              <img src="/static/dist/img/avatar.png" alt="userimages" class="brand-image img-circle elevation-3" style="opacity: .8" height="41" width="41">&nbsp;&nbsp;{{ userinfo.realname }}</a>
+            {% endfor %}
+        </a>
+        <div class="dropdown-menu" style="min-width:100%;">
+          <a href="/Account/userinfo" class="dropdown-item">
+            <i class="fa fa-user-circle mr-2"></i><font size="2">用户信息</font>
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <a href="/Account/changepassword" class="dropdown-item">
+            <i class="fa fa-address-card mr-2"></i><font size="2">修改密码</font>
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <a href="/Account/logout" class="dropdown-item">
+            <i class="fas fa-window-close mr-2"></i><font size="2">注销</font>
+          </a>
+        </div>
+      </li>
+
+    </ul>
+
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/Account/index" class="brand-link">
+      <img src="/static/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light"><strong>&nbsp;&nbsp;&nbsp;OPSSEE 运维平台</strong></span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+
+                <font size="3">工作管理</font>
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+{#                {% if menuname == "label" %}#}
+{#                <a href="/Account/label" class="nav-link active">#}
+{#                {% else %}#}
+                <a href="/Account/label" class="nav-link" >
+{#                {% endif %}#}
+
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">标签提醒</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+{#                {% if menuname == "task" %}#}
+{#                <a href="/Account/task" class="nav-link active" >#}
+{#                {% else %}#}
+                <a href="/Account/task" class="nav-link" >
+{#                {% endif %}#}
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">任务提醒</font></p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                <font size="3">资产管理</font>
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">设备管理</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">机房管理</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">机柜管理</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">设备分类</font></p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                <font size="3">用户管理</font>
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">用户管理</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">角色管理</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">权限管理</font></p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                <font size="3">系统管理</font>
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">配置设置</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">字典设置</font></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><font size="2">操作日志</font></p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+{% block context %}{% endblock %}
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      <a href="/Account/index" data-toggle="modal" data-target="#OPSSEE">OPSSEE运维管理平台</a>
+    </div>
+    <!-- Default to the left -->
+      <a href="/Account/index" data-toggle="modal" data-target="#VERSION">当前版本：V1.0</a>
+
+  </footer>
+
+
+  <!-- 模态框 -->
+  <div class="modal fade" id="OPSSEE">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+          <h4 class="modal-title">关于OPSSEE</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+          OPSSEE是一款开源的运维管理平台,遵循XX协议.
+        </div>
+
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 模态框 -->
+  <div class="modal fade" id="VERSION">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+          <h4 class="modal-title">更新记录</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+          2020年5月31日: 新增用户登陆功能 <br>
+          2020年5月31日: 新增用户注册工具
+        </div>
+
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- ./wrapper -->
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

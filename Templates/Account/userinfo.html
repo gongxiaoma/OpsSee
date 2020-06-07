@@ -1,0 +1,141 @@
+{% extends "../base.html" %}
+{% block context %}
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/Account/index">主页</a></li>
+              <li class="breadcrumb-item active">用户信息</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+       <!-- Main content -->
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card">
+         <div class="card-body login-card-body">
+         {% for userinfo in userinfolist %}
+         <p class="login-box-msg">修改{{ userinfo.username }}用户信息</p>
+           <form id="changeuserinfoForm" name='changepasswordForm' action="login.html" method="post">
+               {% csrf_token %}
+
+             <div class="input-group mb-3">
+               <label class="control-label">用户名称：</label>
+               <input type="text" class="form-control" id="username" name="username" placeholder={{ userinfo.username }} disabled>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fas fa-user"></span>
+                 </div>
+               </div>
+             </div>
+
+             <div class="input-group mb-3">
+               <label class="control-label">真实姓名：</label>
+               <input type="text" class="form-control" id="realname" name="realname" placeholder={{ userinfo.realname }}>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fas fa-address-card"></span>
+                 </div>
+               </div>
+             </div>
+
+
+             <div class="input-group mb-3">
+               <label class="control-label">邮箱地址：</label>
+               <input type="text" class="form-control" id="email" name="email" placeholder={{ userinfo.email }}>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fas fa-envelope"></span>
+                 </div>
+               </div>
+             </div>
+
+
+             <div class="input-group mb-3">
+               <label class="control-label">微信号码：</label>
+               <input type="text" class="form-control" id="wechat" name="wechat" placeholder={{ userinfo.wechat }}>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fab fa-weixin"></span>
+                 </div>
+               </div>
+             </div>
+
+             <div class="input-group mb-3">
+               <label class="control-label">手机号码：</label>
+               <input type="text" class="form-control" id="mobile" name="mobile" placeholder={{ userinfo.mobile }}>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fa fa-phone-square"></span>
+                 </div>
+               </div>
+             </div>
+
+
+             <div class="input-group mb-3">
+               <label class="control-label">QQ号码：&nbsp;&nbsp;&nbsp;</label>
+               <input type="text" class="form-control" id="qq" name="qq" placeholder={{ userinfo.qq }}>
+               <div class="input-group-append">
+                 <div class="input-group-text">
+                   <span class="fab fa-qq"></span>
+                 </div>
+               </div>
+             </div>
+
+           {% endfor %}
+
+
+           {% if tips %}
+            <div style="color:#F00">{{ tips }}</div>
+           {% endif %}
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-block">修改用户信息</button>
+              </div>
+              <!-- /.col -->
+            </div>
+           </form>
+         </div>
+         <!-- /.login-card-body -->
+       </div>
+     </div>
+   </div>
+  </div>
+  </div>
+ </div> <!-- /.content -->
+</div>
+  <!-- /.content-wrapper -->
+{% endblock %}
+
+{% block scripts %}
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+
+<script src="/static/plugins/jquery-validation/jquery.validate.min.js"></script>
+<!-- Custom Script -->
+<script src="/static/build/js/custom/Userinfo.js"></script>
+
+{% endblock %}
