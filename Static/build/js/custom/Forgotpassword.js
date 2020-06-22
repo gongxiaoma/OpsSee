@@ -1,4 +1,4 @@
-$().ready(function() {
+$(document).ready(function () {
 
     $.validator.addMethod("isVerificationcode", function(value, element) {
           var verificationcode = /^\d{4}$/;
@@ -9,10 +9,10 @@ $().ready(function() {
   $("#forgotpasswordForm").validate({
     rules: {
       username: {
-        required: true,
-        minlength: 2
+        required: true
       },
       verificationcode: {
+        required: true,
         isVerificationcode: true
       },
       password: {
@@ -27,10 +27,10 @@ $().ready(function() {
     },
     messages: {
       username: {
-        required: "请输入用户名",
-        minlength: "用户名不能小于2个字符组成"
+        required: "请输入用户名"
       },
       verificationcode: {
+        required: "请输入验证码"
       },
       password: {
         required: "请输入密码",
@@ -41,6 +41,17 @@ $().ready(function() {
         minlength: "密码长度不能小于5个字符组成",
         equalTo: "两次密码输入不一致"
       }
-     }
-    })
+     },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.input-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+    });
 });

@@ -1,4 +1,4 @@
-$().ready(function() {
+$(document).ready(function () {
 
   $.validator.addMethod("isPhone", function(value, element) {
           var length = value.length;
@@ -11,8 +11,12 @@ $().ready(function() {
           return this.optional(element)||(checkQQ.test(value));
          },"请输入正确的QQ号码");
 
-// 在键盘按下并释放及提交后验证提交表单
-  $("#registerForm").validate({
+  // $.validator.setDefaults({
+  //   submitHandler: function () {
+  //     alert( "Form successful submitted!" );
+  //   }
+  // });
+  $('#registerForm').validate({
     rules: {
       username: {
         required: true,
@@ -25,7 +29,7 @@ $().ready(function() {
       confirm_password: {
         required: true,
         minlength: 5,
-        equalTo: "#password"
+        equalTo: "#id_password"
       },
       email: {
         required: true,
@@ -76,6 +80,17 @@ $().ready(function() {
       mobile: {
         required: "请输入手机号码",
       }
-     }
-    })
+     },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.input-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
 });

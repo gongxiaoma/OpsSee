@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.conf.urls import url
+from OpsSee.jump import jump
 from Apps.Account import urls as account_urls
 
 urlpatterns = [
+    url(r'^$', jump, name='jump'),
     path('admin/', admin.site.urls),
     path('Account/', include(account_urls))
 ]

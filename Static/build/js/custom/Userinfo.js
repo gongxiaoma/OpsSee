@@ -1,4 +1,4 @@
-$().ready(function() {
+$(document).ready(function () {
 
   $.validator.addMethod("isPhone", function(value, element) {
           var length = value.length;
@@ -50,6 +50,17 @@ $().ready(function() {
       qq: {
         required: "请输入QQ号码",
       }
-     }
-    })
+     },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.input-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+    });
 });
