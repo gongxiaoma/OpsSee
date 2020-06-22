@@ -14,4 +14,10 @@ OpsSee从运维思想出发，实现DevOps落地。
   
    
 ### 项目截图  
-![OpsSee截图1](https://github.com/gongxiaoma/OpsSee/blob/master/Static/dist/img/demo/demo1.png)
+![OpsSee截图1](https://github.com/gongxiaoma/OpsSee/blob/master/Static/dist/img/demo/demo1.png)  
+  
+   
+   
+### 项目进展  
+OpsSee正处于开发阶段，暂时不提供安装方法。 
+  
