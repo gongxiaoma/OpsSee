@@ -13,17 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include
 from django.conf.urls import url
-from OpsSee.jump import jump
-from Apps.Account import urls as account_urls
-from Apps.UserManager import urls as usermanager_urls
+from Apps.UserManager.user import userView
 
 urlpatterns = [
-    url(r'^$', jump, name='jump'),
-    path('admin/', admin.site.urls),
-    path('Account/', include(account_urls)),
-    path('UserManager/', include(usermanager_urls))
+    url(r'^user/', userView, name='user'),
 ]
